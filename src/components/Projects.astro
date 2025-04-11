@@ -27,9 +27,49 @@ const TAGS = {
     name: "Streamlit",
     class: "bg-gradient-to-r from-rose-500 to-rose-600 text-white",
     icon: Streamlit,
+  },
+  IOT: {
+    name: "IoT",
+    class: "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white",
+    icon: DataScience,
+  },
+  WEB: {
+    name: "Desarrollo Web",
+    class: "bg-gradient-to-r from-purple-500 to-purple-600 text-white",
+    icon: Link,
   }
 }
 const PROJECTS = [
+  {
+    title: "GPS Indoor para Fútbol Sala con ESP32",
+    description:
+      "Trabajo Fin de Grado que desarrolla un sistema de posicionamiento indoor para fútbol sala utilizando tecnología IoT con ESP32. El sistema permite rastrear la posición de los jugadores en tiempo real y generar análisis de rendimiento y estadísticas de juego.",
+    link: "#",
+    github: "#",
+    image: "/projects/supply-chain.webp",
+    tags: [TAGS.PYTHON, TAGS.DATA, TAGS.IOT, TAGS.WEB],
+    details: [
+      "Desarrollo de sistema de posicionamiento indoor con ESP32 (anclas y tags)",
+      "Algoritmos de procesamiento de señales para mejorar la precisión de localización",
+      "Implementación web para visualización en tiempo real de posiciones",
+      "Análisis de datos de rendimiento y generación de estadísticas de juego"
+    ]
+  },
+  {
+    title: "Web Gijón Playas Futbol Sala",
+    description:
+      "Diseño y desarrollo completo del sitio web oficial del club de fútbol sala Gijón Playas FS. Incluye tienda online funcional, sistema de gestión de contenidos, sección de noticias y resultados, y área de socios.",
+    link: "https://gijonplayasfs.es/",
+    github: "#",
+    image: "/projects/supply-chain.webp",
+    tags: [TAGS.WEB, TAGS.DATA],
+    details: [
+      "Diseño y desarrollo frontend y backend completo",
+      "Implementación de tienda online con sistema de pagos",
+      "Creación de panel de administración para gestión de contenidos",
+      "Optimización SEO y rendimiento para mejorar visibilidad"
+    ]
+  },
   {
     title: "Supply Chain & Operations Analytics",
     description:
