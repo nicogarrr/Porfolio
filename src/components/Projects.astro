@@ -1,26 +1,33 @@
 ---
-import GitHub from "./icons/GitHub.astro"
+import GitHub from "./icons/GitHubModern.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 import Python from "./icons/Python.astro"
 import PowerBI from "./icons/PowerBI.astro"
+import Streamlit from "./icons/Streamlit.astro"
+import DataScience from "./icons/DataScience.astro"
 
 const TAGS = {
   DATA: {
     name: "Análisis de Datos",
-    class: "bg-[#3776AB] text-white",
-    icon: null,
+    class: "bg-gradient-to-r from-indigo-500 to-indigo-600 text-white",
+    icon: DataScience,
   },
   POWERBI: {
     name: "Power BI",
-    class: "bg-[#F2C811] text-black",
+    class: "bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900",
     icon: PowerBI,
   },
   PYTHON: {
     name: "Python",
-    class: "bg-[#4B8BBE] text-white",
+    class: "bg-gradient-to-r from-blue-500 to-blue-600 text-white",
     icon: Python,
   },
+  STREAMLIT: {
+    name: "Streamlit",
+    class: "bg-gradient-to-r from-rose-500 to-rose-600 text-white",
+    icon: Streamlit,
+  }
 }
 const PROJECTS = [
   {
@@ -30,57 +37,89 @@ const PROJECTS = [
     link: "#",
     github: "#",
     image: "/projects/supply-chain.webp",
-    tags: [TAGS.PYTHON, TAGS.POWERBI, TAGS.DATA],
+    tags: [TAGS.PYTHON, TAGS.POWERBI, TAGS.DATA, TAGS.STREAMLIT],
+    details: [
+      "Desarrollo de algoritmos de optimización para gestión de inventario",
+      "Creación de dashboards interactivos para visualización de KPIs",
+      "Implementación de chatbot de IA para consultas en tiempo real",
+      "Integración con sistemas existentes para análisis de datos en tiempo real"
+    ]
   }
 ]
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt={title} class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+    PROJECTS.map(({ image, title, description, tags, link, github, details }) => (
+    <article class="project-card flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 bg-white dark:bg-gray-800/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+      <div class="w-full md:w-1/2">
+        <div class="relative h-full overflow-hidden">
+          <img alt={title} class="object-cover object-top w-full h-full transition duration-500 md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
+        <h3 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-700">
+          {title}
+        </h3>
+        <div class="flex flex-wrap mt-3">
+          <ul class="flex flex-row mb-3 gap-x-2 flex-wrap">
+            {tags.map((tag) => (
+              <li class="mb-2">
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 items-center shadow-sm`}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Ver Código
-              
-            </LinkButton>
+          <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+          
+          {details && details.length > 0 && (
+            <div class="mt-4 flex-grow">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Características principales:</h4>
+              <ul class="list-disc pl-5 text-gray-700 dark:text-gray-400 space-y-1">
+                {details.map((detail) => (
+                  <li>{detail}</li>
+                ))}
+              </ul>
+            </div>
           )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Ver Demo
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
+          
+          <footer class="flex items-end justify-start mt-6 gap-x-4">
+            {github && (
+              <LinkButton href={github} class="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white transition-colors">
+                <GitHub class="size-5" />
+                Ver Código
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link} class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transition-colors">
+                <Link class="size-5" />
+                Ver Demo
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </div>
+    </article>
     ))
   }
 </div>
+
+<style>
+  .project-card {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  @media (hover: hover) {
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+  }
+</style>
