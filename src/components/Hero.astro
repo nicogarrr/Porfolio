@@ -10,7 +10,7 @@ import SocialPill from "@/components/SocialPill.astro"
 
 ---
 
-<div class="max-w-xl">
+<div class="max-w-xl mx-auto text-center flex flex-col items-center">
 
 <!-- Animación Hero -->
 <script is:inline>
@@ -42,7 +42,7 @@ import SocialPill from "@/components/SocialPill.astro"
     }
   });
 </script>
-  <div class="flex gap-4 mb-4">
+  <div class="flex gap-4 mb-4 justify-center">
     <img
       class="rounded-full shadow-lg size-16"
       src="/me1.png"
@@ -58,16 +58,16 @@ import SocialPill from "@/components/SocialPill.astro"
     </a>
   </div>
   <h1
-    class="hero-title text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+    class="hero-title text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center"
   >
     Nicolás Iglesias García
   </h1>
   <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300 text-center"
   >
     <strong>Estudiante de último año de Ciencia e Ingeniería de Datos</strong> con experiencia en análisis de datos y desarrollo de aplicaciones web. Desde Gijón, España 🇪🇸, desarrollo soluciones innovadoras combinando ciencia de datos, inteligencia artificial y tecnologías web para resolver problemas complejos de negocio.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8 hero-social">
+  <nav class="flex flex-wrap gap-4 mt-8 hero-social justify-center">
     <SocialPill href="mailto:nicoiglesiasgarcia10@gmail.com">
       <MailIcon class="size-4" />
       nicoiglesiasgarcia10@gmail.com
