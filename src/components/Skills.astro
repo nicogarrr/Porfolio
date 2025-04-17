@@ -92,7 +92,7 @@ const SKILLS = [
         <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-4">{category.title}</h3>
         <div class="flex flex-wrap gap-2">
           {category.skills.map((skill) => (
-            <span class="px-3 py-1 text-sm font-medium bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800">
+            <span class="skill-chip px-3 py-1 text-sm font-medium bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800">
               {skill}
             </span>
           ))}
@@ -101,3 +101,27 @@ const SKILLS = [
     ))}
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.anime) {
+      window.anime({
+        targets: '.skill-chip',
+        opacity: [0,1],
+        scale: [0.6,1],
+        delay: window.anime.stagger(70),
+        easing: 'spring(1, 80, 10, 0)',
+        duration: 600
+      });
+      document.querySelectorAll('.skill-chip').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1.1, duration: 300, easing: 'easeOutBack' });
+        });
+        el.addEventListener('mouseleave', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1, duration: 300, easing: 'easeOutBack' });
+        });
+      });
+    }
+  });
+</script>

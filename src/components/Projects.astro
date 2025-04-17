@@ -88,7 +88,7 @@ const PROJECTS = [
 ]
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-16" id="projects-animated">
   {
     PROJECTS.map(({ image, title, description, tags, link, github, details }) => (
     <article class="project-card flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 bg-white dark:bg-gray-800/30 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
@@ -163,3 +163,28 @@ const PROJECTS = [
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.anime) {
+      window.anime({
+        targets: '.project-card',
+        opacity: [0,1],
+        translateY: [60,0],
+        delay: window.anime.stagger(120),
+        easing: 'easeOutExpo',
+        duration: 800
+      });
+      document.querySelectorAll('.project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1.04, duration: 400, easing: 'easeOutExpo' });
+        });
+        el.addEventListener('mouseleave', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1, duration: 400, easing: 'easeOutExpo' });
+        });
+      });
+    }
+  });
+</script>

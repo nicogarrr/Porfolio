@@ -5,16 +5,16 @@ const personalImageAlt = "Nicolás Iglesias García"
 <section class="flex flex-col md:flex-row gap-10 justify-center items-center bg-white dark:bg-gray-800/30 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
   <div class="[&>p]:mb-5 [&>p>strong]:text-indigo-600 dark:[&>p>strong]:text-indigo-400 [&>p>strong]:font-semibold text-pretty order-2 md:order-1 md:w-2/3">
     <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-700 mb-4">Sobre mí</h2>
-    <p class="text-gray-700 dark:text-gray-300">
-      Me llamo Nicolás Iglesias García, aunque mis amigos me llaman Nico. Descubrí mi pasión por la programación desde muy joven y, desde entonces, he enfocado mi carrera en el desarrollo de soluciones basadas en datos y aplicaciones web.
+    <p class="aboutme-para text-gray-700 dark:text-gray-300">
+     Descubrí mi pasión por la programación desde muy joven y, desde entonces, he enfocado mi carrera en el desarrollo de soluciones basadas en datos y aplicaciones web.
     </p>
-    <p class="text-gray-700 dark:text-gray-300">
+    <p class="aboutme-para text-gray-700 dark:text-gray-300">
       Actualmente curso mi último año en la Universidad de Oviedo en el <strong>Grado de Ciencia e Ingeniería de Datos</strong> y he adquirido experiencia práctica a través de prácticas en empresas líderes como <strong>Accenture</strong> y <strong>Merkle</strong>.
     </p>
-    <p class="text-gray-700 dark:text-gray-300">
+    <p class="aboutme-para text-gray-700 dark:text-gray-300">
       Mi experiencia abarca diversas áreas técnicas, incluyendo <strong>bases de datos relacionales y NoSQL</strong>, <strong>aprendizaje automático</strong> (modelos supervisados y no supervisados), <strong>inteligencia artificial generativa</strong> (LLMs, difusión, GANs), y <strong>desarrollo web full-stack</strong>. He trabajado con tecnologías como <strong>Python</strong>, <strong>SQL</strong>, <strong>Streamlit</strong>, <strong>Power BI</strong>, y diversos frameworks de desarrollo web.
     </p>
-    <p class="text-gray-700 dark:text-gray-300">
+    <p class="aboutme-para text-gray-700 dark:text-gray-300">
       Mi objetivo es aprovechar el poder de los datos y la IA para impulsar la innovación y resolver problemas complejos de negocio, mientras continúo aprendiendo y creciendo profesionalmente en este campo en constante evolución.
     </p>
     
@@ -41,3 +41,27 @@ const personalImageAlt = "Nicolás Iglesias García"
     </div>
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.anime) {
+      window.anime({
+        targets: '.aboutme-para',
+        opacity: [0,1],
+        translateY: [40,0],
+        delay: window.anime.stagger(120),
+        easing: 'easeOutExpo',
+        duration: 800
+      });
+      document.querySelectorAll('.aboutme-para').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1.04, duration: 300, easing: 'easeOutBack' });
+        });
+        el.addEventListener('mouseleave', () => {
+          window.anime.remove(el);
+          window.anime({ targets: el, scale: 1, duration: 300, easing: 'easeOutBack' });
+        });
+      });
+    }
+  });
+</script>
